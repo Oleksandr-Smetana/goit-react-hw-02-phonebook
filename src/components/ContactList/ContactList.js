@@ -1,12 +1,15 @@
+import PropTypes from 'prop-types';
+import s from './ContactList.module.css';
+
 export default function ContactList({ contacts, onDelete }) {
   return (
-    <ol>
+    <ol className={s.contactList}>
       {contacts.map(({ id, name, number }) => (
-        <li key={id}>
-          <p>
+        <li className={s.contactItem} key={id}>
+          <p className={s.contactInfo}>
             {name}: {number}
           </p>
-          <button id={id} onClick={onDelete}>
+          <button className={s.deleteButton} id={id} onClick={onDelete}>
             Delete
           </button>
         </li>
@@ -14,6 +17,11 @@ export default function ContactList({ contacts, onDelete }) {
     </ol>
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 // import { Component } from 'react';
 

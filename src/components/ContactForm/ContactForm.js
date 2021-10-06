@@ -1,11 +1,19 @@
 import { Component } from 'react';
+// import PropTypes from 'prop-types';
+import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
+  //   static propTypes = {
+  //     name: PropTypes.string.isRequired,
+  //     number: PropTypes.string.isRequired,
+  //   };
+
   state = {
     name: '',
     number: '',
   };
 
+  // запись имени и номера телефона в стейт
   handleChange = e => {
     // console.log(e.currentTarget.name);
     // console.log(e.currentTarget.value);
@@ -13,6 +21,7 @@ class ContactForm extends Component {
     this.setState({ [name]: value });
   };
 
+  // добавление контакта в список контактов и сброс инпутов
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state);
@@ -21,16 +30,18 @@ class ContactForm extends Component {
     this.resetForm();
   };
 
+  // сброс стейта
   resetForm = () => {
     this.setState({ name: '', number: '' });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form className={s.form} onSubmit={this.handleSubmit}>
+        <label className={s.label}>
           Name
           <input
+            className={s.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -41,9 +52,10 @@ class ContactForm extends Component {
           />
         </label>
 
-        <label>
+        <label className={s.label}>
           Number
           <input
+            className={s.input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -54,7 +66,9 @@ class ContactForm extends Component {
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button className={s.submitButton} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
