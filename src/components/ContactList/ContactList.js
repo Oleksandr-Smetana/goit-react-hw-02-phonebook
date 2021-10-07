@@ -9,7 +9,11 @@ export default function ContactList({ contacts, onDelete }) {
           <p className={s.contactInfo}>
             {name}: {number}
           </p>
-          <button className={s.deleteButton} id={id} onClick={onDelete}>
+          <button
+            className={s.deleteButton}
+            id={id}
+            onClick={() => onDelete(id)}
+          >
             Delete
           </button>
         </li>

@@ -43,11 +43,11 @@ class Phonebook extends Component {
   };
 
   // удаление одного контакта по клику на кнопку "Delete"
-  removeContact = e => {
-    // console.log(e.target.id);
+  removeContact = contactId => {
+    // console.log(e.target);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => {
-        return contact.id !== e.target.id;
+        return contact.id !== contactId;
       }),
     }));
   };
